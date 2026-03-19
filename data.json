@@ -112,7 +112,7 @@
   "pk": 10,
   "fields": {
     "name": "Oban",
-    "description": "Oban is a charming coastal town often referred to as the Gateway to the Isles. Surrounded by rugged coastline and scenic islands, it offers breathtaking sea views and a relaxed atmosphere. Known for its fresh seafood and ferry connections to the Hebrides, Oban is a perfect base for exploring Scotland�s west coast.",
+    "description": "Oban is a charming coastal town often referred to as the Gateway to the Isles. Surrounded by rugged coastline and scenic islands, it offers breathtaking sea views and a relaxed atmosphere. Known for its fresh seafood and ferry connections to the Hebrides, Oban is a perfect base for exploring Scotland's west coast.",
     "cover_image": "",
     "created_at": "2026-03-19T09:59:20.260Z",
     "updated_at": "2026-03-19T10:35:28.153Z",
@@ -184,7 +184,7 @@
   "pk": 6,
   "fields": {
     "city": 10,
-    "name": "McCaig�s Tower",
+    "name": "McCaig's Tower",
     "cover_image": "",
     "official_url": "https://www.visitscotland.com/info/see-do/mccaigs-tower-p248651",
     "description": "",
