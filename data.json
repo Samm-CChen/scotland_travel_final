@@ -16,7 +16,7 @@
   "pk": 2,
   "fields": {
     "name": "Glasgow",
-    "description": "Glasgow is Scotland�s largest city, famous for its rich industrial history, lively arts scene, and friendly atmosphere. It offers a mix of museums, music, and modern architecture, attracting visitors interested in culture and entertainment.",
+    "description": "Glasgow is Scotland's largest city, famous for its rich industrial history, lively arts scene, and friendly atmosphere. It offers a mix of museums, music, and modern architecture, attracting visitors interested in culture and entertainment.",
     "cover_image": "",
     "created_at": "2026-03-19T09:57:58.798Z",
     "updated_at": "2026-03-19T10:14:38.171Z",
@@ -52,7 +52,7 @@
   "pk": 5,
   "fields": {
     "name": "Dundee",
-    "description": "Dundee is a vibrant waterfront city on Scotland�s east coast, known for its transformation into a hub of design and innovation. The city blends modern architecture, such as the V&A Dundee museum, with rich industrial heritage. Visitors can enjoy scenic views along the River Tay, explore cultural attractions, and experience a growing food and arts scene.",
+    "description": "Dundee is a vibrant waterfront city on Scotland's east coast, known for its transformation into a hub of design and innovation. The city blends modern architecture, such as the V&A Dundee museum, with rich industrial heritage. Visitors can enjoy scenic views along the River Tay, explore cultural attractions, and experience a growing food and arts scene.",
     "cover_image": "",
     "created_at": "2026-03-19T09:58:33.048Z",
     "updated_at": "2026-03-19T10:35:11.310Z",
@@ -64,7 +64,7 @@
   "pk": 6,
   "fields": {
     "name": "Stirling",
-    "description": "Stirling is a historic city that played a key role in Scotland�s past. Home to Stirling Castle and the Wallace Monument, it offers a deep insight into Scottish history and provides stunning views of the surrounding countryside.",
+    "description": "Stirling is a historic city that played a key role in Scotland's past. Home to Stirling Castle and the Wallace Monument, it offers a deep insight into Scottish history and provides stunning views of the surrounding countryside.",
     "cover_image": "",
     "created_at": "2026-03-19T09:58:42.476Z",
     "updated_at": "2026-03-19T10:15:08.896Z",
@@ -76,7 +76,7 @@
   "pk": 7,
   "fields": {
     "name": "Perth",
-    "description": "called the �Fair City.� It is known for its elegant parks, cultural heritage, and nearby countryside. With attractions such as Scone Palace and beautiful green spaces, Perth offers a peaceful and scenic experience for visitors.",
+    "description": "called the Fair City. It is known for its elegant parks, cultural heritage, and nearby countryside. With attractions such as Scone Palace and beautiful green spaces, Perth offers a peaceful and scenic experience for visitors.",
     "cover_image": "",
     "created_at": "2026-03-19T09:58:52.367Z",
     "updated_at": "2026-03-19T10:35:40.793Z",
@@ -112,7 +112,7 @@
   "pk": 10,
   "fields": {
     "name": "Oban",
-    "description": "Oban is a charming coastal town often referred to as the �Gateway to the Isles.� Surrounded by rugged coastline and scenic islands, it offers breathtaking sea views and a relaxed atmosphere. Known for its fresh seafood and ferry connections to the Hebrides, Oban is a perfect base for exploring Scotland�s west coast.",
+    "description": "Oban is a charming coastal town often referred to as the Gateway to the Isles. Surrounded by rugged coastline and scenic islands, it offers breathtaking sea views and a relaxed atmosphere. Known for its fresh seafood and ferry connections to the Hebrides, Oban is a perfect base for exploring Scotland�s west coast.",
     "cover_image": "",
     "created_at": "2026-03-19T09:59:20.260Z",
     "updated_at": "2026-03-19T10:35:28.153Z",
