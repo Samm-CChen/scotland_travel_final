@@ -1,0 +1,398 @@
+[
+{
+  "model": "travel.city",
+  "pk": 1,
+  "fields": {
+    "name": "Edinburgh",
+    "description": "Edinburgh is the capital of Scotland, known for its historic architecture, vibrant festivals, and iconic landmarks such as Edinburgh Castle and the Royal Mile. The city blends medieval heritage with a modern cultural scene, making it one of the most popular tourist destinations in the UK.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:57:47.368Z",
+    "updated_at": "2026-03-19T10:11:46.968Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 2,
+  "fields": {
+    "name": "Glasgow",
+    "description": "Glasgow is Scotland�s largest city, famous for its rich industrial history, lively arts scene, and friendly atmosphere. It offers a mix of museums, music, and modern architecture, attracting visitors interested in culture and entertainment.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:57:58.798Z",
+    "updated_at": "2026-03-19T10:14:38.171Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 3,
+  "fields": {
+    "name": "Inverness",
+    "description": "Inverness is a charming city in the Scottish Highlands, often considered the gateway to Loch Ness. Surrounded by natural beauty, it is a perfect destination for exploring scenic landscapes, historic sites, and Highland culture.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:58:09.424Z",
+    "updated_at": "2026-03-19T10:14:48.624Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 4,
+  "fields": {
+    "name": "Aberdeen",
+    "description": "Aberdeen, known as the \"Granite City,\" is famous for its striking grey stone architecture and coastal location. It combines historic charm with a strong maritime heritage and offers beautiful beaches and cultural attractions.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:58:20.856Z",
+    "updated_at": "2026-03-19T10:14:57.625Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 5,
+  "fields": {
+    "name": "Dundee",
+    "description": "Dundee is a vibrant waterfront city on Scotland�s east coast, known for its transformation into a hub of design and innovation. The city blends modern architecture, such as the V&A Dundee museum, with rich industrial heritage. Visitors can enjoy scenic views along the River Tay, explore cultural attractions, and experience a growing food and arts scene.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:58:33.048Z",
+    "updated_at": "2026-03-19T10:35:11.310Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 6,
+  "fields": {
+    "name": "Stirling",
+    "description": "Stirling is a historic city that played a key role in Scotland�s past. Home to Stirling Castle and the Wallace Monument, it offers a deep insight into Scottish history and provides stunning views of the surrounding countryside.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:58:42.476Z",
+    "updated_at": "2026-03-19T10:15:08.896Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 7,
+  "fields": {
+    "name": "Perth",
+    "description": "called the �Fair City.� It is known for its elegant parks, cultural heritage, and nearby countryside. With attractions such as Scone Palace and beautiful green spaces, Perth offers a peaceful and scenic experience for visitors.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:58:52.367Z",
+    "updated_at": "2026-03-19T10:35:40.793Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 8,
+  "fields": {
+    "name": "Fort William",
+    "description": "Fort William is a popular outdoor destination located near Ben Nevis, the highest mountain in the UK. It is well known for hiking, climbing, and breathtaking Highland scenery, attracting adventure seekers from around the world.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:59:02.111Z",
+    "updated_at": "2026-03-19T10:15:17.119Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 9,
+  "fields": {
+    "name": "St Andrews",
+    "description": "St Andrews is a historic coastal town famous as the home of golf and one of the oldest universities in the world. It features beautiful beaches, ancient ruins, and a peaceful atmosphere rich in tradition.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:59:11.875Z",
+    "updated_at": "2026-03-19T10:15:49.093Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.city",
+  "pk": 10,
+  "fields": {
+    "name": "Oban",
+    "description": "Oban is a charming coastal town often referred to as the �Gateway to the Isles.� Surrounded by rugged coastline and scenic islands, it offers breathtaking sea views and a relaxed atmosphere. Known for its fresh seafood and ferry connections to the Hebrides, Oban is a perfect base for exploring Scotland�s west coast.",
+    "cover_image": "",
+    "created_at": "2026-03-19T09:59:20.260Z",
+    "updated_at": "2026-03-19T10:35:28.153Z",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 1,
+  "fields": {
+    "city": 1,
+    "name": "Edinburgh Castle",
+    "cover_image": "https://www.edinburghcastle.scot/media/1103/plan-visit-hero.jpg?width=1200&height=630&v=1db8771c19ae650",
+    "official_url": "https://www.edinburghcastle.scot/",
+    "description": "",
+    "image_url": "https://www.edinburghcastle.scot/media/1103/plan-visit-hero.jpg?width=1200&height=630&v=1db8771c19ae650"
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 2,
+  "fields": {
+    "city": 1,
+    "name": "Royal Mile",
+    "cover_image": "",
+    "official_url": "https://edinburgh.org/discover/areas/royal-mile/",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 3,
+  "fields": {
+    "city": 1,
+    "name": "Arthur's Seat",
+    "cover_image": "",
+    "official_url": "https://www.visitscotland.com/info/see-do/arthurs-seat-p914341",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 4,
+  "fields": {
+    "city": 5,
+    "name": "V&A Dundee",
+    "cover_image": "",
+    "official_url": "https://www.vam.ac.uk/dundee",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 5,
+  "fields": {
+    "city": 5,
+    "name": "RRS Discovery",
+    "cover_image": "",
+    "official_url": "https://www.rrsdiscovery.com",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 6,
+  "fields": {
+    "city": 10,
+    "name": "McCaig�s Tower",
+    "cover_image": "",
+    "official_url": "https://www.visitscotland.com/info/see-do/mccaigs-tower-p248651",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 7,
+  "fields": {
+    "city": 10,
+    "name": "Oban Distillery",
+    "cover_image": "",
+    "official_url": "https://www.malts.com/en-gb/distilleries/oban",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 8,
+  "fields": {
+    "city": 7,
+    "name": "Scone Palace",
+    "cover_image": "",
+    "official_url": "https://www.scone-palace.co.uk",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 9,
+  "fields": {
+    "city": 7,
+    "name": "The Black Watch Castle & Museum",
+    "cover_image": "",
+    "official_url": "https://www.theblackwatch.co.uk",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 10,
+  "fields": {
+    "city": 4,
+    "name": "Dunnottar Castle",
+    "cover_image": "",
+    "official_url": "https://www.dunnottarcastle.co.uk",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 11,
+  "fields": {
+    "city": 4,
+    "name": "Aberdeen Maritime Museum",
+    "cover_image": "",
+    "official_url": "https://www.aberdeenmaritimemuseum.org",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 12,
+  "fields": {
+    "city": 4,
+    "name": "Duthie Park",
+    "cover_image": "",
+    "official_url": "https://www.aberdeencity.gov.uk/services/leisure-culture-and-parks/parks/duthie-park",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 13,
+  "fields": {
+    "city": 8,
+    "name": "Ben Nevis",
+    "cover_image": "",
+    "official_url": "https://www.visitscotland.com/info/see-do/ben-nevis-p245711",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 14,
+  "fields": {
+    "city": 8,
+    "name": "Glenfinnan Viaduct",
+    "cover_image": "",
+    "official_url": "https://www.visitscotland.com/info/see-do/glenfinnan-viaduct-p245741",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 15,
+  "fields": {
+    "city": 8,
+    "name": "West Highland Museum",
+    "cover_image": "",
+    "official_url": "https://www.westhighlandmuseum.org.uk",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 16,
+  "fields": {
+    "city": 2,
+    "name": "Kelvingrove Art Gallery and Museum",
+    "cover_image": "",
+    "official_url": "https://www.glasgowlife.org.uk/museums/kelvingrove",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 17,
+  "fields": {
+    "city": 2,
+    "name": "Glasgow Cathedral",
+    "cover_image": "",
+    "official_url": "https://www.historicenvironment.scot/visit-a-place/places/glasgow-cathedral",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 18,
+  "fields": {
+    "city": 2,
+    "name": "Riverside Museum",
+    "cover_image": "",
+    "official_url": "https://www.glasgowlife.org.uk/museums/riverside",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 19,
+  "fields": {
+    "city": 3,
+    "name": "Loch Ness",
+    "cover_image": "",
+    "official_url": "https://www.visitscotland.com/info/see-do/loch-ness-p247311",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 20,
+  "fields": {
+    "city": 3,
+    "name": "Inverness Castle",
+    "cover_image": "",
+    "official_url": "https://www.inverness-castle.co.uk",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 21,
+  "fields": {
+    "city": 9,
+    "name": "St Andrews Cathedral",
+    "cover_image": "",
+    "official_url": "https://www.historicenvironment.scot/visit-a-place/places/st-andrews-cathedral",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 22,
+  "fields": {
+    "city": 6,
+    "name": "Stirling Castle",
+    "cover_image": "",
+    "official_url": "https://www.historicenvironment.scot/visit-a-place/places/stirling-castle",
+    "description": "",
+    "image_url": ""
+  }
+},
+{
+  "model": "travel.attraction",
+  "pk": 23,
+  "fields": {
+    "city": 6,
+    "name": "Wallace Monument",
+    "cover_image": "",
+    "official_url": "https://www.nationalwallacemonument.com",
+    "description": "",
+    "image_url": ""
+  }
+}
+]
