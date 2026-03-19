@@ -1,0 +1,92 @@
+{% extends 'travel/base.html' %}
+{% load static %}
+
+{% block title %}My Bookmarks | Scotland Travel{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'travel/js/bookmark-handler.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const removeButtons = document.querySelectorAll('.remove-bookmark-btn');
+
+        removeButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const attractionId = this.dataset.attractionId;
+
+                if (confirm('Are you sure you want to remove this attraction from bookmarks?')) {
+                    toggleBookmark(attractionId, this);
+
+                    const cardCol = this.closest('.bookmark-card');
+                    if (cardCol) {
+                        cardCol.remove();
+                    }
+
+                    if (document.querySelectorAll('#bookmark-list .bookmark-card').length === 0) {
+                        document.getElementById('empty-bookmarks').classList.remove('d-none');
+                    }
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">My Bookmarked Attractions</h1>
+
+{% if user.is_authenticated %}
+    {% if bookmarks %}
+    <div class="row" id="bookmark-list">
+        {% for bookmark in bookmarks %}
+        <div class="col-md-4 mb-4 bookmark-card">
+            <div class="card h-100">
+                {% if bookmark.attraction.cover_image %}
+                <img src="{{ bookmark.attraction.cover_image }}" class="card-img-top" alt="{{ bookmark.attraction.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="{% url 'travel:attraction_detail' bookmark.attraction.id %}" class="text-decoration-none">
+                            {{ bookmark.attraction.name }}
+                        </a>
+                    </h5>
+                    <p class="text-muted">
+                        <i class="fas fa-map-marker-alt me-1"></i> {{ bookmark.attraction.city.name }}
+                    </p>
+                    <p class="card-text">{{ bookmark.attraction.description|truncatechars:80 }}</p>
+
+                    <div class="d-flex gap-2">
+                        <a href="{% url 'travel:attraction_detail' bookmark.attraction.id %}" class="btn btn-outline-primary flex-grow-1">
+                            <i class="fas fa-info-circle me-1"></i> View Details
+                        </a>
+                        <button class="btn btn-outline-danger remove-bookmark-btn" data-attraction-id="{{ bookmark.attraction.id }}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-footer text-muted">
+                    Saved on: {{ bookmark.created_at|date:"d M Y" }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="empty-bookmarks" class="alert alert-info d-none">
+        <i class="fas fa-bookmark me-2"></i>
+        You haven't bookmarked any attractions yet.
+        <a href="{% url 'travel:cities' %}" class="alert-link">Browse cities</a> to find your favorites.
+    </div>
+    {% else %}
+    <div id="empty-bookmarks" class="alert alert-info">
+        <i class="fas fa-bookmark me-2"></i>
+        You haven't bookmarked any attractions yet.
+        <a href="{% url 'travel:cities' %}" class="alert-link">Browse cities</a> to find your favorites.
+    </div>
+    {% endif %}
+{% else %}
+<div class="alert alert-warning">
+    <i class="fas fa-exclamation-triangle me-2"></i>
+    <a href="{% url 'login' %}?next={{ request.path }}">Login</a> to view your bookmarks.
+</div>
+{% endif %}
+{% endblock %}

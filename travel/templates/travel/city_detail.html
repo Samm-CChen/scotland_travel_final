@@ -1,0 +1,100 @@
+{% extends 'travel/base.html' %}
+{% load static %}
+
+{% block title %}{{ city.name }} | Scotland Travel{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'travel/js/rating-handler.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ city.name }}</h1>
+<p class="lead">{{ city.description }}</p>
+
+{% if user.is_authenticated %}
+<div class="card mb-5">
+    <div class="card-header">
+        <h5 class="mb-0">Rate This City</h5>
+    </div>
+    <div class="card-body">
+        <p class="mb-3">How would you rate {{ city.name }}? (1–5 stars)</p>
+
+        <form style="display:none;">
+            {% csrf_token %}
+        </form>
+
+        <div class="mb-3">
+            <div class="d-flex align-items-center flex-wrap">
+                <span class="me-2 fw-bold" id="avg-rating-{{ city.id }}">{{ avg_rating|default:0|floatformat:1 }}</span>
+
+                <div class="star-rating me-2" id="display-stars-{{ city.id }}">
+                    <span class="star {% if avg_rating >= 1 %}active{% endif %}">★</span>
+                    <span class="star {% if avg_rating >= 2 %}active{% endif %}">★</span>
+                    <span class="star {% if avg_rating >= 3 %}active{% endif %}">★</span>
+                    <span class="star {% if avg_rating >= 4 %}active{% endif %}">★</span>
+                    <span class="star {% if avg_rating >= 5 %}active{% endif %}">★</span>
+                </div>
+
+                <span class="text-muted" id="rating-count-{{ city.id }}">({{ rating_count|default:0 }} reviews)</span>
+            </div>
+        </div>
+
+        <div class="star-rating mb-3" id="city-rating-container" data-city-id="{{ city.id }}">
+            {% include 'travel/partials/rating_star.html' with rating=user_rating readonly=False %}
+        </div>
+        <small class="text-muted">Click a star to submit your rating.</small>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info mb-5">
+    <i class="fas fa-info-circle me-2"></i>
+    <a href="{% url 'login' %}?next={{ request.path }}">Login</a> to rate this city.
+</div>
+{% endif %}
+
+<h2 class="mb-4">Top Attractions in {{ city.name }}</h2>
+
+<div class="row">
+    {% for attraction in attractions %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if attraction.cover_image %}
+            <img src="{{ attraction.image_url }}" class="card-img-top" alt="{{ attraction.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'travel:attraction_detail' attraction.id %}" class="text-decoration-none">
+                        {{ attraction.name }}
+                    </a>
+                </h5>
+                <p class="card-text">{{ attraction.description|truncatechars:100 }}</p>
+
+                <div class="mb-2">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <span class="me-2">{{ attraction.avg_rating|default:0|floatformat:1 }}</span>
+
+                        <div class="star-rating">
+                            <span class="star {% if attraction.avg_rating >= 1 %}active{% endif %}">★</span>
+                            <span class="star {% if attraction.avg_rating >= 2 %}active{% endif %}">★</span>
+                            <span class="star {% if attraction.avg_rating >= 3 %}active{% endif %}">★</span>
+                            <span class="star {% if attraction.avg_rating >= 4 %}active{% endif %}">★</span>
+                            <span class="star {% if attraction.avg_rating >= 5 %}active{% endif %}">★</span>
+                        </div>
+
+                        <span class="text-muted ms-2">({{ attraction.rating_count|default:0 }} reviews)</span>
+                    </div>
+                </div>
+
+                <a href="{% url 'travel:attraction_detail' attraction.id %}" class="btn btn-outline-primary">
+                    <i class="fas fa-landmark me-1"></i> View Details
+                </a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">No attractions listed for this city yet.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'travel/base.html' %}
+
+{% block title %}Home | Scotland Travel{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <h1 class="display-4 mb-4">Explore Scotland's Beautiful Cities</h1>
+        <p class="lead mb-5">Discover top attractions, leave ratings, and save your favorite spots</p>
+        <a href="{% url 'travel:cities' %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-map-marker-alt me-2"></i> Browse Cities
+        </a>
+    </div>
+</div>
+{% endblock %}

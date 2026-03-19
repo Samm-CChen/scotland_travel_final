@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scottish Cities</title>
+</head>
+<body>
+
+    <h1>Scottish Cities</h1>
+
+    <ul>
+        {% for city in cities %}
+            <li>
+                <button onclick="loadAttractions({{ city.id }})">
+                    {{ city.name }}
+                </button>
+            </li>
+        {% empty %}
+            <li>No cities available.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Attractions</h2>
+
+    <div id="filter-section" style="display: none; margin-bottom: 15px;">
+        <label for="min-rating">Minimum star rating:</label>
+        <select id="min-rating" onchange="applyFilter()">
+            <option value="">All</option>
+            <option value="1">1+ stars</option>
+            <option value="2">2+ stars</option>
+            <option value="3">3+ stars</option>
+            <option value="4">4+ stars</option>
+            <option value="5">5 stars</option>
+        </select>
+    </div>
+
+    <div id="attractions">
+        <p>Click a city to see its attractions.</p>
+    </div>
+
+    <script>
+        let currentCityId = null;
+
+        function loadAttractions(cityId) {
+            currentCityId = cityId;
+            document.getElementById("filter-section").style.display = "block";
+            fetchAttractions();
+        }
+
+        function applyFilter() {
+            if (currentCityId !== null) {
+                fetchAttractions();
+            }
+        }
+
+        function fetchAttractions() {
+            let minRating = document.getElementById("min-rating").value;
+            let url = "/api/cities/" + currentCityId + "/";
+
+            if (minRating) {
+                url += "?min_rating=" + minRating;
+            }
+
+            fetch(url)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Failed to fetch attractions");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    let container = document.getElementById("attractions");
+                    container.innerHTML = "";
+
+                    if (data.attractions.length === 0) {
+                        container.innerHTML = "<p>No attractions match this rating filter.</p>";
+                        return;
+                    }
+
+                    data.attractions.forEach(a => {
+                        container.innerHTML += `
+                            <div style="margin-bottom: 20px;">
+                                <h3>${a.name}</h3>
+                                <img src="${a.image}" width="300">
+                                <p>Rating: ${a.rating}</p>
+                                <a href="${a.url}" target="_blank">Official site</a>
+                            </div>
+                        `;
+                    });
+                })
+                .catch(error => {
+                    document.getElementById("attractions").innerHTML =
+                        "<p>Something went wrong while loading attractions.</p>";
+                    console.error(error);
+                });
+        }
+    </script>
+
+</body>
+</html>

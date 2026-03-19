@@ -1,0 +1,25 @@
+{% if request.path != '/' %}
+<nav aria-label="breadcrumb" class="mb-4">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'travel:home' %}">Home</a></li>
+
+        {% if 'cities' in request.path and not city and not attraction %}
+        <li class="breadcrumb-item active" aria-current="page">Cities</li>
+
+        {% elif city %}
+        <li class="breadcrumb-item"><a href="{% url 'travel:cities' %}">Cities</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ city.name }}</li>
+
+        {% elif attraction %}
+        <li class="breadcrumb-item"><a href="{% url 'travel:cities' %}">Cities</a></li>
+        <li class="breadcrumb-item">
+            <a href="{% url 'travel:city_detail' attraction.city.id %}">{{ attraction.city.name }}</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{ attraction.name }}</li>
+
+        {% elif 'bookmarks' in request.path %}
+        <li class="breadcrumb-item active" aria-current="page">My Bookmarks</li>
+        {% endif %}
+    </ol>
+</nav>
+{% endif %}

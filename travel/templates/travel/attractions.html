@@ -1,0 +1,73 @@
+{% extends "travel/base.html" %}
+
+{% block title %}Attractions | Scotland Travel{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Attractions</h1>
+
+    <form method="get" class="card p-3 mb-4">
+        <div class="row g-3 align-items-end">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Attraction Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    class="form-control"
+                    placeholder="Search by attraction name..."
+                    value="{{ name_query }}"
+                >
+            </div>
+
+            <div class="col-md-4">
+                <label for="min_rating" class="form-label">Minimum Rating</label>
+                <input
+                    type="number"
+                    name="min_rating"
+                    id="min_rating"
+                    class="form-control"
+                    min="0"
+                    max="5"
+                    step="0.1"
+                    placeholder="e.g. 4"
+                    value="{{ min_rating }}"
+                >
+            </div>
+
+            <div class="col-md-2 d-grid">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        {% for attraction in attractions %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if attraction.image_url %}
+                        <img src="{{ attraction.image_url }}" class="card-img-top" alt="{{ attraction.name }}">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ attraction.name }}</h5>
+                        <p class="card-text mb-1">
+                            <strong>City:</strong> {{ attraction.city.name }}
+                        </p>
+                        <p class="card-text">
+                            <strong>Rating:</strong> {{ attraction.avg_rating|default:0|floatformat:1 }}
+                            ({{ attraction.rating_count }})
+                        </p>
+
+                        <a href="{% url 'travel:attraction_detail' attraction.id %}" class="btn btn-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No attractions found.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

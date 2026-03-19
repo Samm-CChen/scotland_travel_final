@@ -1,0 +1,137 @@
+{% extends 'travel/base.html' %}
+{% load static %}
+
+{% block title %}{{ attraction.name }} | Scotland Travel{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'travel/js/rating-handler.js' %}"></script>
+<script src="{% static 'travel/js/bookmark-handler.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const attractionId = {{ attraction.id }};
+
+        const ratingContainer = document.getElementById('attraction-rating-container');
+        if (ratingContainer) {
+            const stars = ratingContainer.querySelectorAll('.star');
+
+            {% if user_rating %}
+            stars.forEach((star, index) => {
+                if (index < {{ user_rating }}) {
+                    star.classList.add('active');
+                }
+            });
+            {% endif %}
+
+            stars.forEach((star, index) => {
+                star.addEventListener('click', function() {
+                    const rating = index + 1;
+
+                    if (!{{ user.is_authenticated|yesno:"true,false" }}) {
+                        window.location.href = "{% url 'login' %}?next={{ request.path }}";
+                        return;
+                    }
+
+                    submitAttractionRating(attractionId, rating);
+
+                    stars.forEach((s, i) => {
+                        s.classList.toggle('active', i < rating);
+                    });
+                });
+            });
+        }
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-4">{{ attraction.name }}</h1>
+        <p class="text-muted mb-4">Located in {{ attraction.city.name }}</p>
+
+        {% if attraction.image_url %}
+        <img src="{{ attraction.image_url }}" class="img-fluid rounded mb-4" alt="{{ attraction.name }}">
+        {% endif %}
+
+        <div class="mb-4">
+            <h3>About</h3>
+            <p>{{ attraction.description|linebreaks }}</p>
+        </div>
+
+        <div class="mb-4">
+            {% if attraction.official_url %}
+            <a href="{{ attraction.official_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <i class="fas fa-globe me-2"></i> Visit Official Website
+            </a>
+            {% else %}
+            <p class="text-muted">Official website not available.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Rating</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-3 flex-wrap">
+                    <span class="h3 me-3 mb-0" id="avg-rating-{{ attraction.id }}">
+                        {{ avg_rating|floatformat:1 }}
+                    </span>
+
+                    <div
+                        class="star-rating readonly-stars"
+                        id="display-stars-{{ attraction.id }}"
+                        data-rating="{{ avg_rating|default:0 }}"
+                    >
+                        <span class="star-display">★</span>
+                        <span class="star-display">★</span>
+                        <span class="star-display">★</span>
+                        <span class="star-display">★</span>
+                        <span class="star-display">★</span>
+                    </div>
+                </div>
+
+                <p class="text-muted" id="rating-count-{{ attraction.id }}">
+                    {{ rating_count }} reviews
+                </p>
+
+                {% if user.is_authenticated %}
+                <hr>
+                <p class="mb-2">Rate this attraction:</p>
+                <div class="star-rating mb-3" id="attraction-rating-container" data-attraction-id="{{ attraction.id }}">
+                    {% include 'travel/partials/rating_star.html' with rating=0 readonly=False %}
+                </div>
+                {% else %}
+                <hr>
+                <p class="mb-0">
+                    <a href="{% url 'login' %}?next={{ request.path }}">Login</a> to rate this attraction.
+                </p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <button
+                    id="bookmark-btn"
+                    class="btn btn-outline-danger w-100 bookmark-btn"
+                    data-attraction-id="{{ attraction.id }}">
+                    {% if is_bookmarked %}
+                    <i class="fas fa-heart me-1"></i> Remove from Bookmarks
+                    {% else %}
+                    <i class="far fa-heart me-1"></i> Add to Bookmarks
+                    {% endif %}
+                </button>
+                {% else %}
+                <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-outline-danger w-100">
+                    <i class="far fa-heart me-1"></i> Login to Bookmark
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

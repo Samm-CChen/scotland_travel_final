@@ -1,0 +1,286 @@
+/* ==============================================
+   City List Page Styles
+   ============================================== */
+/* Filter Form */
+.filter-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.filter-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.filter-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.filter-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+}
+
+.filter-btn {
+    align-self: flex-end;
+    white-space: nowrap;
+}
+
+/* City Grid */
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* ==============================================
+   City Detail Page Styles
+   ============================================== */
+/* City Header */
+.city-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--scotland-blue);
+}
+
+.city-title {
+    font-size: 2.5rem;
+    color: var(--scotland-blue);
+    margin-bottom: 0.5rem;
+}
+
+.city-description {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    line-height: 1.8;
+}
+
+/* Rating Section */
+.rating-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+}
+
+.rating-header {
+    padding: 1rem 1.5rem;
+    background-color: var(--light-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.rating-body {
+    padding: 1.5rem;
+}
+
+.rating-instructions {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.city-rating-container {
+    margin: 1rem 0;
+}
+
+/* Attractions Section */
+.attractions-header {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attractions-title {
+    font-size: 2rem;
+    color: var(--scotland-blue);
+}
+
+.attractions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Attraction Detail Page */
+.attraction-detail-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.attraction-main {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+}
+
+.attraction-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.attraction-image {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+    object-fit: cover;
+    height: 400px;
+}
+
+.attraction-info {
+    margin-bottom: 2rem;
+}
+
+.attraction-name {
+    font-size: 2.2rem;
+    color: var(--scotland-blue);
+    margin-bottom: 0.5rem;
+}
+
+.attraction-location {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.attraction-description {
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.attraction-actions {
+    margin-top: 2rem;
+}
+
+/* Sidebar Rating Card */
+.sidebar-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.sidebar-card-header {
+    padding: 1rem 1.5rem;
+    background-color: var(--light-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-card-body {
+    padding: 1.5rem;
+}
+
+.sidebar-rating-display {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sidebar-rating-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--scotland-blue);
+    margin-right: 1rem;
+}
+
+.sidebar-rating-count {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Bookmark Button */
+.bookmark-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.bookmark-btn.bookmarked {
+    background-color: var(--danger-color);
+    color: #fff;
+    border-color: var(--danger-color);
+}
+
+.bookmark-btn.bookmarked:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* ==============================================
+   Responsive Adjustments
+   ============================================== */
+@media (max-width: 992px) {
+    .attraction-detail-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .attraction-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .city-title {
+        font-size: 2rem;
+    }
+    
+    .attractions-title {
+        font-size: 1.75rem;
+    }
+    
+    .attraction-name {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .filter-form {
+        flex-direction: column;
+    }
+    
+    .filter-btn {
+        align-self: stretch;
+    }
+    
+    .city-grid, .attractions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .attraction-image {
+        height: 200px;
+    }
+    
+    .sidebar-rating-value {
+        font-size: 1.5rem;
+    }
+}

@@ -1,0 +1,80 @@
+{% extends 'travel/base.html' %}
+{% load static %}
+
+{% block title %}Scotland Cities | Scotland Travel{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'travel/js/city-renderer.js' %}?v=2"></script>
+{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Scotland's Top Cities</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form id="city-filter-form" method="get">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="{{ filter_form.city_name.id_for_label }}" class="form-label">City Name</label>
+                    {{ filter_form.city_name }}
+                </div>
+                <div class="col-md-4">
+                    <label for="{{ filter_form.min_rating.id_for_label }}" class="form-label">Minimum Rating</label>
+                    {{ filter_form.min_rating }}
+                </div>
+                <div class="col-md-2 align-self-end">
+                    <button type="submit" class="btn btn-primary w-100">Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row city-grid">
+    {% for city in cities %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if city.cover_image %}
+            <img src="{{ city.cover_image }}" class="card-img-top" alt="{{ city.name }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'travel:city_detail' city.id %}" class="text-decoration-none">
+                        {{ city.name }}
+                    </a>
+                </h5>
+                <p class="card-text">{{ city.description|truncatechars:100 }}</p>
+
+                <div class="mb-2">
+                    <div class="d-flex align-items-center flex-wrap">
+                        <span class="h5 me-2 mb-0" id="avg-rating-{{ city.id }}">
+                            {{ city.avg_rating|default:0|floatformat:1 }}
+                        </span>
+
+                        <div class="star-rating">
+                            <span class="star {% if city.avg_rating >= 1 %}active{% endif %}">★</span>
+                            <span class="star {% if city.avg_rating >= 2 %}active{% endif %}">★</span>
+                            <span class="star {% if city.avg_rating >= 3 %}active{% endif %}">★</span>
+                            <span class="star {% if city.avg_rating >= 4 %}active{% endif %}">★</span>
+                            <span class="star {% if city.avg_rating >= 5 %}active{% endif %}">★</span>
+                        </div>
+
+                        <span class="text-muted ms-2" id="rating-count-{{ city.id }}">
+                            ({{ city.rating_count|default:0 }} reviews)
+                        </span>
+                    </div>
+                </div>
+
+                <a href="{% url 'travel:city_detail' city.id %}" class="btn btn-outline-primary">
+                    <i class="fas fa-info-circle me-1"></i> View Attractions
+                </a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">No cities found matching your criteria.</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

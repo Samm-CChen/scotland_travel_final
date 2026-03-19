@@ -1,0 +1,181 @@
+/* ==============================================
+   Bookmarks Page Styles
+   ============================================== */
+/* Page Header */
+.bookmarks-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--scotland-red);
+}
+
+.bookmarks-title {
+    font-size: 2.5rem;
+    color: var(--scotland-red);
+    margin-bottom: 0.5rem;
+}
+
+.bookmarks-subtitle {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+}
+
+/* Bookmarks Grid */
+.bookmarks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Bookmark Card */
+.bookmark-card {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.bookmark-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.bookmark-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.bookmark-card-body {
+    padding: 1.5rem;
+}
+
+.bookmark-card-title {
+    font-size: 1.25rem;
+    color: var(--scotland-blue);
+    margin-bottom: 0.5rem;
+}
+
+.bookmark-card-location {
+    display: flex;
+    align-items: center;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.bookmark-card-location i {
+    margin-right: 0.5rem;
+    color: var(--scotland-red);
+}
+
+.bookmark-card-description {
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Bookmark Card Actions */
+.bookmark-card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.bookmark-action-btn {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.remove-bookmark-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Bookmark Card Footer */
+.bookmark-card-footer {
+    padding: 1rem 1.5rem;
+    background-color: var(--light-color);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--secondary-color);
+    font-size: 0.875rem;
+}
+
+/* Empty Bookmarks State */
+.empty-bookmarks {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 3rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.empty-bookmarks i {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.empty-bookmarks h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.empty-bookmarks p {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.empty-bookmarks .btn {
+    font-weight: 500;
+}
+
+/* ==============================================
+   Responsive Adjustments
+   ============================================== */
+@media (max-width: 768px) {
+    .bookmarks-title {
+        font-size: 2rem;
+    }
+    
+    .bookmarks-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .bookmarks-header {
+        text-align: center;
+    }
+    
+    .bookmarks-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .empty-bookmarks {
+        padding: 2rem 1rem;
+    }
+    
+    .empty-bookmarks i {
+        font-size: 2rem;
+    }
+    
+    .bookmark-card-actions {
+        flex-direction: column;
+    }
+    
+    .remove-bookmark-btn {
+        width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        padding: 0.5rem;
+    }
+}

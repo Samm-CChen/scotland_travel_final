@@ -1,0 +1,13 @@
+{% if readonly %}
+    <span class="star {% if rating|default:0 >= 1 %}active{% endif %}">★</span>
+    <span class="star {% if rating|default:0 >= 2 %}active{% endif %}">★</span>
+    <span class="star {% if rating|default:0 >= 3 %}active{% endif %}">★</span>
+    <span class="star {% if rating|default:0 >= 4 %}active{% endif %}">★</span>
+    <span class="star {% if rating|default:0 >= 5 %}active{% endif %}">★</span>
+{% else %}
+    <span class="star {% if rating|default:0 >= 1 %}active{% endif %}" data-rating="1">★</span>
+    <span class="star {% if rating|default:0 >= 2 %}active{% endif %}" data-rating="2">★</span>
+    <span class="star {% if rating|default:0 >= 3 %}active{% endif %}" data-rating="3">★</span>
+    <span class="star {% if rating|default:0 >= 4 %}active{% endif %}" data-rating="4">★</span>
+    <span class="star {% if rating|default:0 >= 5 %}active{% endif %}" data-rating="5">★</span>
+{% endif %}
