@@ -30,6 +30,10 @@ def register(request):
 
     next_url = request.GET.get("next") or request.POST.get("next") or "/"
 
+    # 只接受真正的路徑，例如 /、/cities/、/bookmarks/
+    if not next_url.startswith("/"):
+        next_url = "/"
+
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
