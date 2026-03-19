@@ -28,7 +28,7 @@ def register(request):
     if request.user.is_authenticated:
         return redirect("travel:home")
 
-    next_url = request.GET.get("next") or request.POST.get("next") or settings.LOGIN_REDIRECT_URL
+    next_url = request.GET.get("next") or request.POST.get("next") or "/"
 
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -39,13 +39,16 @@ def register(request):
 
             if is_safe_url(next_url, allowed_hosts={request.get_host()}):
                 return redirect(next_url)
-            return redirect(settings.LOGIN_REDIRECT_URL)
+            return redirect("travel:home")
         else:
             messages.error(request, "Please correct the errors below.")
     else:
         form = UserCreationForm()
 
-    return render(request, "registration/register.html", {"form": form, "next": next_url})
+    return render(request, "registration/register.html", {
+        "form": form,
+        "next": next_url,
+    })
 
 
 @login_required
